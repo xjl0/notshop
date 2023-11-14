@@ -1,0 +1,21 @@
+<section class="h-full">
+ 
+  <form 
+  class="py-4 px-6 flex items-center flex-col mb-2"
+  [formGroup]="loginForm"
+  (ngSubmit)="submitLogin()"
+  >
+    <p>E-mail</p>
+    <input formControlName="email" class="py-4 px-6 border rounded mb-2" type="email" placeholder="Enter your e-mail here">
+    <p *ngIf="this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched"><small class="text-red-400 mb-2">Email is required</small></p>
+    <p>Password</p>
+    <input formControlName="password" class="py-4 px-6 border rounded mb-2" type="password" placeholder="password, please...">
+    <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">
+      <small class="text-red-400 mb-4">Password is required (min length 8 symbol)</small>
+    </p>
+    <button
+      [disabled]="!loginForm.valid"
+    class="border py-2 px-4 my-10 rounded bg-zinc-400"
+    >Go!</button>
+  </form>
+</section>
