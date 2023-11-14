@@ -13,9 +13,14 @@ const routes: Routes = [
   {path: 'about', component:PageAboutComponent},
   {path: 'login', component:LoginComponent},
   {path: '**', component:NotfoundComponent},
-  // {path: 'profile', 
-  // loadChildren: ()=> import('./components/profile/profile.module').then((m)=>m.ProfileModule)
-  // }
+  {
+    path: 'profile', 
+    pathMatch: 'full',
+    loadChildren: ()=>
+     import('./components/profile/profile.module').then(
+      (m)=> m.ProfileModule
+      ),
+  }
 ];
 
 @NgModule({

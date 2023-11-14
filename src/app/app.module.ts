@@ -19,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProfileModule } from './components/profile/profile.module';
+import { ProfileRoutingModule } from './components/profile/profile-routing.module';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProfileModule } from './components/profile/profile.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
+    ProfileRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
