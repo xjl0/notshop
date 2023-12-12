@@ -20,7 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProfileModule } from './components/profile/profile.module';
 import { ProfileRoutingModule } from './components/profile/profile-routing.module';
-
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { ProfileRoutingModule } from './components/profile/profile-routing.modul
     FooterComponent,
     LoginComponent,
     NotfoundComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

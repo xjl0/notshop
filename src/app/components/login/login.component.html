@@ -3,7 +3,7 @@
   <form 
   class="py-4 px-6 flex items-center flex-col mb-2"
   [formGroup]="loginForm"
-  (ngSubmit)="submitLogin()"
+  (ngSubmit)="onSubmitLogin()"
   >
     <p>E-mail</p>
     <input formControlName="email" class="py-4 px-6 border rounded mb-2" type="email" placeholder="Enter your e-mail here">

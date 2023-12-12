@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators , FormBuilder, ReactiveFormsModule  } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserInterface } from 'src/app/models/UserInterface';
 
 
 @Component({
@@ -9,28 +11,34 @@ import { Router, NavigationExtras } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+    // submitLogin() {
+  //   // console.log(this.loginForm.value)
+  //   this.authService.login(this.loginForm.value).subscribe({
+  //     next: ()=>this.router.navigate(['profile']),
+  //     error: (err)=>alert(err.message)
+  //   })
+  // }
 
-  loginForm!: FormGroup
+  fb = inject(FormBuilder);
+  http = inject(HttpClient)
+  authService = inject(AuthService)
+  router = inject(Router)
 
-  constructor(
-    private router: Router,
-    private authService: AuthService) { }
+  loginForm = this.fb.nonNullable.group({
+    email: ['', Validators.required],
+    password: ['',Validators.required]
+  });
 
-  submitLogin() {
-    // console.log(this.loginForm.value)
-    this.authService.login(this.loginForm.value).subscribe({
-      next: ()=>this.router.navigate(['profile']),
-      error: (err)=>alert(err.message)
-    })
-  }
-
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-
-      'email': new FormControl('', [Validators.required, Validators.email]),
-      'password': new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)])
-
+  onSubmitLogin(): void {
+    this.http
+    .post<{user: UserInterface}>('https://api.realworld.io/api/users/login',{user: this.loginForm.getRawValue(),
+  })
+    .subscribe((response)=>{
+      console.log('response', response);
+      localStorage.setItem('token', response.user.token);
+      this.authService.currentUserSig.set(response.user)
+      this.router.navigateByUrl('/profile')
     })
   }
 

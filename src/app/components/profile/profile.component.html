@@ -1,4 +1,25 @@
-<p>
-  profile works!
-  <router-outlet></router-outlet>
-</p>
+<section class="text-center">
+  <h2 class="mb-5">Hello, {{authService.currentUserSig()?.username}}!</h2>
+  <h3 class="mb-5">This is your privat space in our NotShop.</h3>
+<div class="grid grid-cols-2 gap-4 m-auto place-content-center ">
+  <div class="mb-5 p-5 w-full  text-center border-2 border-gray-400 rounded-lg">
+    <a routerLink="/basket">Basket</a>
+  </div>
+  <div class="mb-5 p-5 w-full  text-center border-2 border-gray-400 rounded-lg">
+    <a routerLink="/orders">Orders</a>
+  </div>
+  <div class="p-5 w-full text-center border-2 border-gray-400 rounded-lg">
+    <a routerLink="/userinfo">User info</a>
+  </div>
+  <div class="p-5 w-full  text-center border-2 border-gray-400 rounded-lg">
+    <a routerLink="/favorite">Favorite products</a>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+  <!-- <app-basket></app-basket>
+  <app-favorite-products></app-favorite-products>
+  <app-orders></app-orders>
+  <app-userinfo></app-userinfo> -->
+</section>
+

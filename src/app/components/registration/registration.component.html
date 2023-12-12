@@ -1,0 +1,38 @@
+<section class="h-full">
+ 
+  <form 
+  class="py-4 px-6 flex items-center flex-col mb-2"
+  [formGroup]="registrationForm"
+  (ngSubmit)="onSubmitRegistration()"
+  >
+
+      <p>Username</p>
+      <input 
+        formControlName="username"
+        class="py-4 px-6 border rounded mb-2"
+        type="text"
+        placeholder="Username"
+      >
+      <p>E-mail</p>
+      <input
+        formControlName="email"
+        class="py-4 px-6 border rounded mb-2"
+        type="text"
+        placeholder="Enter your e-mail here">
+     
+      <p>Password</p>
+      <input 
+        formControlName="password"
+        class="py-4 px-6 border rounded mb-2"
+        type="password"
+        placeholder="password, please..."
+      >
+     
+      <button
+        type="submit"
+        class="border py-2 px-4 my-10 rounded bg-zinc-400"
+      >
+      Go registration!
+    </button>
+  </form>
+</section>

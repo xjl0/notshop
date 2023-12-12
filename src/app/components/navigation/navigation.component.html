@@ -1,12 +1,25 @@
 <nav
-class="px-4 top-0 right-0 left-0 h-[50px] flex justify-between items-center text-white bg-zinc-400"
+  class="px-4 top-0 right-0 left-0 h-[50px] flex justify-between items-center text-white bg-zinc-400"
 >
-<h1 class="font-bold">NotShop</h1>
-<span>
-  <a routerLink="" class="mr-2">Main</a>
-  <a routerLink="/products" class="mr-2">Products</a>
-  <a routerLink="/about">About</a>
-</span>
+  <h1 class="font-bold">NotShop</h1>
+  <span>
+    <a routerLink="" class="mr-2">Main</a>
+    <a routerLink="/products" class="mr-2">Products</a>
+    <a routerLink="/about">About</a>
+  </span>
 
-<a routerLink="/login">Log In</a>
+  <span>
+    <a routerLink="/profile" class="mr-2">Profile</a>
+    <a routerLink="/login"
+    *ngIf="!authService.currentUserSig()">
+      Log In
+    </a>
+    <a
+      *ngIf="authService.currentUserSig()"
+      (click) = "authService.logout()"
+      routerLink="/"
+    >
+      Log out
+    </a>
+  </span>
 </nav>
