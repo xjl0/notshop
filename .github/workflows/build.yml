@@ -25,10 +25,12 @@ jobs:
           npm install
           NODE_ENV=production npm run build
           ls
+          cd dist
+          ls
       - name: PreDeploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: deploy
-          folder: dist/browser
+          folder: dist
           clean: true
  
