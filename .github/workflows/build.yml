@@ -24,10 +24,11 @@ jobs:
         run: |
           npm install
           NODE_ENV=production npm run build
+          ls
       - name: PreDeploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: deploy
-          folder: dist/notshop/browser
+          folder: dist/browser
           clean: true
  
