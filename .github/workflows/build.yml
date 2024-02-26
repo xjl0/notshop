@@ -31,6 +31,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: deploy
-          folder: dist
+          folder: dist/shop-app
           clean: true
  
